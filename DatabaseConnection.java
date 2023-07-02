@@ -2,16 +2,24 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 public class DatabaseConnection {
-    public static void main(String[] args) {
-        String url = "jdbc:mysql://localhost:3306/parking" ;
-        String name = "name";
-        String password = "password";
+    public Connection databaseLink;
 
-        try {
-            Connection connection = DriverManager.getConnection(url, name, password);
-            System.out.println("Lidhja me bazën e të dhënave u realizua me sukses!");
-        } catch (SQLException e) {
-            System.out.println("Gabim gjatë lidhjes me bazën e të dhënave: " + e.getMessage());
-}
+    public Connection getConnection(){
+        String databaseName = "user";
+        String databaseUser = "Medina";
+        String databasePassword = "Medina12345.";
+        String url = "jdbc:mysql://localhost/"+databaseName;
+
+        try{
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            databaseLink = DriverManager.getConnection(url,databaseUser,databasePassword);
+
+        }catch(Exception e){
+            e.printStackTrace();
+            e.getCause();
         }
+        return databaseLink;
+    }
 }
+
+
