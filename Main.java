@@ -8,7 +8,7 @@ public class Main {
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Enter the total number of parking slots:");
+        System.out.print("Enter the total number of parking slots:");
         totalSlots = scanner.nextInt();
         availableSlots = totalSlots;
 
@@ -49,9 +49,20 @@ public class Main {
                 default:
                     System.out.println("Invalid choice. Please try again.");
             }
-            Cmimorja cmimorja = new Cmimorja("09:00");
-            double cmimi = cmimorja.llogaritCmimin("12:30");
-            System.out.println("Cmimi total është: " + cmimi);
+            System.out.print("Vendosni orën e hyrjes (formati HH:mm): ");
+            String oraHyrje = scanner.next();
+
+            System.out.print("Vendosni orën e daljes (formati HH:mm): ");
+            String oraDalje = scanner.next();
+
+            Qmimorja qmimorja = new Qmimorja(oraHyrje);
+            double qmimi = qmimorja.llogaritQmimin(oraDalje);
+            System.out.println("Qmimi total është: " + qmimi + " Euro ");
+
+            MetodaPageses metodaPageses = new MetodaPageses();
+
+            // Konfirmoni pagesën
+            metodaPageses.konfirmoPagesen(qmimi);
         }
 
 
